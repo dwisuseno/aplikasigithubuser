@@ -4,6 +4,8 @@
     <string name="user_name">user_name</string>
     <string name="full_name">full_name</string>
     <string name="username">username</string>
+    <string name="follower">follower</string>
+    <string name="following">following</string>
 
     <!-- Other string resources-->
 

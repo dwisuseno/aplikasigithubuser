@@ -25,9 +25,12 @@ class MainActivity : AppCompatActivity() {
         get() {
             val dataName = resources.getStringArray(R.array.data_name)
             val dataUsername = resources.getStringArray(R.array.data_username)
+            val dataAvatar = resources.obtainTypedArray(R.array.avatar)
+            val dataFollower = resources.getStringArray(R.array.followers)
+            val dataFollowing = resources.getStringArray(R.array.following)
             val listUser = ArrayList<Pengguna>()
             for (i in dataName.indices) {
-                val user = Pengguna(dataName[i])
+                val user = Pengguna(dataName[i],dataUsername[i],dataAvatar.getResourceId(i, -1),dataFollower[i],dataFollowing[i])
                 listUser.add(user)
             }
             return listUser
