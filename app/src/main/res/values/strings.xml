@@ -6,6 +6,13 @@
     <string name="username">username</string>
     <string name="follower">follower</string>
     <string name="following">following</string>
+    <string name="nama">Nama</string>
+    <string name="followers">Follower</string>
+    <string name="followings">Following</string>
+    <string name="company">Company</string>
+    <string name="repository">Repository</string>
+    <string name="location">Location</string>
+    <string name="username1">Username</string>
 
     <!-- Other string resources-->
 
