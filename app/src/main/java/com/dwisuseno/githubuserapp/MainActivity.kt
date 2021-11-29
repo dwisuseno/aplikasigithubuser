@@ -1,7 +1,11 @@
 package com.dwisuseno.githubuserapp
 
+import android.content.Intent
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -36,8 +40,26 @@ class MainActivity : AppCompatActivity() {
             return listUser
         }
     private fun showRecyclerList() {
-        rvUsers.layoutManager = LinearLayoutManager(this)
+//        rvUsers.layoutManager = LinearLayoutManager(this)
+        if (applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            rvUsers.layoutManager = GridLayoutManager(this, 2)
+        } else {
+            rvUsers.layoutManager = LinearLayoutManager(this)
+        }
         val listPenggunaAdapter = ListPenggunaAdapter(list)
         rvUsers.adapter = listPenggunaAdapter
+
+        listPenggunaAdapter.setOnItemClickCallback(object : ListPenggunaAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Pengguna) {
+//                showSelectedPengguna(data)
+                val moveWithObjectIntent = Intent(this@MainActivity, DetailPengguna::class.java)
+                moveWithObjectIntent.putExtra(DetailPengguna.EXTRA_PERSON, data)
+                startActivity(moveWithObjectIntent)
+            }
+        })
+    }
+
+    private fun showSelectedPengguna(pengguna: Pengguna) {
+        Toast.makeText(this, "Kamu memilih " + pengguna.name, Toast.LENGTH_SHORT).show()
     }
 }
